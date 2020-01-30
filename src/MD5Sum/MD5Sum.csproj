@@ -4,7 +4,7 @@
     <TargetFramework>netstandard2.0</TargetFramework>
     <LangVersion>default</LangVersion>
     <Nullable>enable</Nullable>
-    <PackageVersion>0.0.1</PackageVersion>
+    <PackageVersion>0.0.2</PackageVersion>
     <Title>MD5Sum</Title>
     <Authors>Ben Abelshausen</Authors>
     <Description>A tiny library to read, write and validate .md5 files compatible with md5sum.</Description>
@@ -13,6 +13,7 @@
     <PackageIconUrl>https://github.com/anyways-open/md5sum/blob/master/logo.png</PackageIconUrl>
     <RepositoryUrl>https://github.com/anyways-open/md5sum/</RepositoryUrl>
     <PackageTags>md5</PackageTags>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
   </PropertyGroup>
 
 </Project>
