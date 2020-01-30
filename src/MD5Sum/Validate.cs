@@ -73,5 +73,42 @@ namespace MD5Sum
 
             return true;
         }
+
+        /// <summary>
+        /// Matches the two files, returns true if they are identical.
+        /// </summary>
+        /// <param name="md5file1">The first file.</param>
+        /// <param name="md5file2">The second file.</param>
+        /// <returns>True if files are identical, false otherwise.</returns>
+        public static async Task<bool> TryCompareAsync(string md5file1, string md5file2)
+        {
+            if (!File.Exists(md5file1)) throw new FileNotFoundException("md5 file1 not found.");
+            if (!File.Exists(md5file2)) throw new FileNotFoundException("md5 file2 not found.");
+            
+            using var stream1 = File.OpenRead(md5file1);
+            using var stream2 = File.OpenRead(md5file2);
+
+            return await TryCompareAsync(stream1, stream2);
+        }
+
+        internal static async Task<bool> TryCompareAsync(Stream stream1, Stream stream2)
+        {
+            while (true)
+            {
+                var stream1Byte = stream1.ReadByte();
+                var stream2Byte = stream2.ReadByte();
+
+                if (stream1Byte == stream2Byte)
+                {
+                    if (stream1Byte == -1) break;
+                }
+                else
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
     }
 }
